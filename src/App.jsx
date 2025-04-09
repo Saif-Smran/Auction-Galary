@@ -1,20 +1,22 @@
 
 import './App.css'
 import Baner from './Components/Baner/Baner'
+import Footer from './Components/Footer/Footer'
 import Navbar from './Components/Navbar/Navbar'
 
 function App() {
 
   return (
     <>
-      <div className='poppins'>
-        <div className="navber max-w-screen-xl mx-auto">
+      <div>
+        <div className="navber max-w-screen-xl mx-auto poppins">
           <Navbar></Navbar>
         </div>
-        <div className="baner bg-[url(/Banner-min.jpg)] bg-cover bg-left bg-no-repeat h-[80vh] sora flex items-center text-white">
+        <div className='sora'>
           <Baner></Baner>
         </div>
       </div>
+      <Footer></Footer>
     </>
   )
 }
