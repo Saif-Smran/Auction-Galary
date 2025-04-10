@@ -68,7 +68,12 @@ function App() {
                   <h1 className='text-center text-2xl font-bold flex justify-center items-center gap-4'><span><FaRegHeart /></span> Favorite Items</h1>
                   <hr className="w-full border-t border-dotted border-gray-400 mt-6 " />
                   {
-                    favCard.map(item => <FevourateItem key={item.id} item={item} removeFavCard={removeFavCard} ></FevourateItem>)
+                    favCard.length === 0 ? 
+                    <div className='text-center my-5 space-y-3'>
+                      <h1 className='text-2xl font-bold'>No Favourites Yet</h1>
+                      <p className='text-lg'>Click the heart icon on any item to add it to your favorites</p>
+                    </div> 
+                    :favCard.map(item => <FevourateItem key={item.id} item={item} removeFavCard={removeFavCard} ></FevourateItem>)
                   }
                   <hr className="w-full border-t border-dotted border-gray-400 mb-6 mt-4" />
                   <p className='text-2xl px-5'>Total bids Amount : {formattedPrice(totalAmount)} </p>
