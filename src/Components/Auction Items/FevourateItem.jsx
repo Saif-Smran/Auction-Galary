@@ -5,7 +5,7 @@ import { BiError } from "react-icons/bi";
 
 
 
-const FevourateItem = ({item}) => {
+const FevourateItem = ({item,removeFavCard}) => {
 
     const showError = () => {
         toast.custom((t) => (
@@ -29,6 +29,7 @@ const FevourateItem = ({item}) => {
             position: 'top-right',
             duration: 5000,
         });
+        removeFavCard(item)
     };
 
     const formattedPrice = (price) =>

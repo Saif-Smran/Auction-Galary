@@ -4,7 +4,7 @@ import SingleItem from './singleItem';
 
 
 
-const AuctionItems = ({handleFavCard , handleTotalAmountPos}) => {
+const AuctionItems = ({ handleFavCard, handleTotalAmountPos }) => {
 
     const [items, setItems] = useState([])
 
@@ -13,7 +13,7 @@ const AuctionItems = ({handleFavCard , handleTotalAmountPos}) => {
         fetch('/auction.json')
             .then(res => res.json())
             .then(data => setItems(data))
-    },[])
+    }, [])
 
     // console.log(items)
 

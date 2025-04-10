@@ -6,7 +6,9 @@ import { FaCheckCircle, FaTimes } from 'react-icons/fa';
 const SingleItem = ({ item , handleFavCard ,handleTotalAmountPos}) => {
     const [liked, setLiked] = useState(false);
 
+
     const toggleLike = () => {
+
         if (liked === false) {
             setLiked(true);
             showNotification()
@@ -32,8 +34,7 @@ const SingleItem = ({ item , handleFavCard ,handleTotalAmountPos}) => {
             >
                 <FaCheckCircle className="text-green-500 mt-1" size={22} />
                 <div className="flex-1">
-                    <p className="font-semibold">Success</p>
-                    <p className="text-sm text-gray-600">Your message was sent successfully.</p>
+                    <p className="font-semibold">An item is added to favorites.</p>
                 </div>
                 <button
                     onClick={() => toast.dismiss(t.id)}
