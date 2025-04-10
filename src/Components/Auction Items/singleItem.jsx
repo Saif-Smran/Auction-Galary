@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { Toaster, toast } from 'react-hot-toast';
+import { FaCheckCircle, FaTimes } from 'react-icons/fa';
 
 const SingleItem = ({ item }) => {
     const [liked, setLiked] = useState(false);
@@ -7,6 +9,7 @@ const SingleItem = ({ item }) => {
     const toggleLike = () => {
         if (liked === false) {
             setLiked(true);
+            showNotification()
         }
     };
 
@@ -18,6 +21,31 @@ const SingleItem = ({ item }) => {
             maximumFractionDigits: 0,
         });
 
+    const showNotification = () => {
+        toast.custom((t) => (
+            <div
+                className={`flex items-start gap-3 p-4 rounded-xl shadow-lg border-l-4 border-green-500 bg-white text-gray-800 transition-all duration-300 ${t.visible ? 'animate-enter' : 'animate-leave'
+                    }`}
+                style={{ minWidth: '280px' }}
+            >
+                <FaCheckCircle className="text-green-500 mt-1" size={22} />
+                <div className="flex-1">
+                    <p className="font-semibold">Success</p>
+                    <p className="text-sm text-gray-600">Your message was sent successfully.</p>
+                </div>
+                <button
+                    onClick={() => toast.dismiss(t.id)}
+                    className="text-gray-400 hover:text-red-500 transition-colors"
+                >
+                    <FaTimes size={18} />
+                </button>
+            </div>
+        ), {
+            position: 'top-right',
+            duration: 5000,
+        });
+    };
+
     return (
         <tr >
             <th className="flex items-center space-x-4">
@@ -27,6 +55,7 @@ const SingleItem = ({ item }) => {
             <td className='text-lg'>{formattedPrice(item.currentBidPrice)}</td>
             <td className='font-bold'>{item.timeLeft}</td>
             <td>
+                <Toaster position="top-right" />
                 <div
                     onClick={toggleLike}
                     className={`text-2xl flex justify-center items-center ${liked ? "cursor-not-allowed" : "cursor-pointer"}`}

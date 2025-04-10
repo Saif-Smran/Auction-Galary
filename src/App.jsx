@@ -1,12 +1,33 @@
-
+import React from 'react'
+import { useState } from 'react'
 import './App.css'
 import AuctionItems from './Components/Auction Items/AuctionItems'
 import Baner from './Components/Baner/Baner'
 import Footer from './Components/Footer/Footer'
 import Navbar from './Components/Navbar/Navbar'
+import FevourateItem from './Components/Auction Items/FevourateItem'
 import { FaRegHeart } from "react-icons/fa";
 
+
+
 function App() {
+
+  const [totalAmount, setTotalAmount] = useState(0)
+  const [favCard, setFavCard] = useState([])
+
+  const handleTotalAmountPos = (amount) => {
+    const newTotal = totalAmount + amount;
+    setTotalAmount(newTotal);
+  }
+  const handleTotalAmountNeg = (amount) => {
+    const newTotal = totalAmount - amount;
+    setTotalAmount(newTotal);
+  }
+
+  const handleFavCard = (card) =>{
+    const newFavCard = [...favCard, card]
+    setFavCard(newFavCard)
+  }
 
   return (
     <>
@@ -30,8 +51,10 @@ function App() {
               <div className='right-container  w-[30%]'>
                 <div className="bg-white rounded-lg shadow-lg py-5">
                   <h1 className='text-center text-2xl font-bold flex justify-center items-center gap-4'><span><FaRegHeart /></span> Favorite Items</h1>
-                  <hr className="w-full border-t border-dotted border-gray-400 my-6 " />
-
+                  <hr className="w-full border-t border-dotted border-gray-400 mt-6 " />
+                  <FevourateItem></FevourateItem>
+                  <hr className="w-full border-t border-dotted border-gray-400 mb-6 mt-4" />
+                  <p className='text-2xl px-5'>Total bids Amount : {totalAmount} </p>
                 </div>
               </div>
             </div>
