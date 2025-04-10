@@ -5,7 +5,7 @@ import { BiError } from "react-icons/bi";
 
 
 
-const FevourateItem = () => {
+const FevourateItem = ({item}) => {
 
     const showError = () => {
         toast.custom((t) => (
@@ -46,20 +46,20 @@ const FevourateItem = () => {
                     alt="Vintage Leica M3 Camera"
                     className="w-16 h-16 object-cover mr-4"
                     height="60"
-                    src="https://placehold.co/60x60"
+                    src={item.image}
                     width="60"
                 />
                 <div className="flex-1">
                     <div className="flex justify-between items-start">
-                        <h2 className="text-lg font-semibold">Vintage Leica M3 Camera</h2>
+                        <h2 className="text-lg font-semibold">{item.title}</h2>
                         <Toaster position="top-right" />
                         <button onClick={showError} className="text-red-300 hover:text-red-700">
                             <FaTimes />
                         </button>
                     </div>
                     <div className="mt-2">
-                        <span className="text-gray-700 font-semibold">{formattedPrice(28000)}</span>
-                        <span className="text-gray-500 ml-4">Bids: 12</span>
+                        <span className="text-gray-700 font-semibold">{formattedPrice(item.currentBidPrice)}</span>
+                        <span className="text-gray-500 ml-4">Bids: {item.bidsCount}</span>
                     </div>
                 </div>
             </div>

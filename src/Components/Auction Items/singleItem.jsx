@@ -3,13 +3,15 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Toaster, toast } from 'react-hot-toast';
 import { FaCheckCircle, FaTimes } from 'react-icons/fa';
 
-const SingleItem = ({ item }) => {
+const SingleItem = ({ item , handleFavCard ,handleTotalAmountPos}) => {
     const [liked, setLiked] = useState(false);
 
     const toggleLike = () => {
         if (liked === false) {
             setLiked(true);
             showNotification()
+            handleFavCard(item)
+            handleTotalAmountPos(item.currentBidPrice)
         }
     };
 

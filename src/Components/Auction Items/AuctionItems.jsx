@@ -4,7 +4,7 @@ import SingleItem from './singleItem';
 
 
 
-const AuctionItems = () => {
+const AuctionItems = ({handleFavCard , handleTotalAmountPos}) => {
 
     const [items, setItems] = useState([])
 
@@ -15,7 +15,7 @@ const AuctionItems = () => {
             .then(data => setItems(data))
     },[])
 
-    console.log(items)
+    // console.log(items)
 
     return (
         <div>
@@ -33,7 +33,7 @@ const AuctionItems = () => {
                     <tbody className='p-4'>
                         {
                             items.map((item) => (
-                                <SingleItem key={item.id} item={item}></SingleItem>
+                                <SingleItem key={item.id} item={item} handleFavCard={handleFavCard} handleTotalAmountPos={handleTotalAmountPos}></SingleItem>
                             ))
                         }
                     </tbody>
